@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Money {
+
     private String currency;
     private BigDecimal denomination;
 
