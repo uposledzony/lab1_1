@@ -25,7 +25,7 @@ public class OfferItem {
     private Money discount;
 
     public Money getTotalCost() {
-        return Money.getTotalCost(discount, quantity, product.getPrice());
+        return new Money(discount.getCurrency(), new BigDecimal(quantity)).multiply(product.getPrice().subtract(discount));
     }
 
     @Override

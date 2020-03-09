@@ -21,11 +21,16 @@ public class Money {
         return currency;
     }
 
-    public static Money getTotalCost(Money discount, int quantity, Money itemPrice){
-        String currency = itemPrice.getCurrency();
-        BigDecimal cost = new BigDecimal(0);
-        cost = cost.add(new BigDecimal(quantity).multiply(itemPrice.getDenomination().subtract(discount.getDenomination())));
-        return new Money(currency, cost);
+    public Money add(Money other){
+        return new Money(currency,denomination.add(other.denomination));
+    }
+
+    public Money multiply(Money other){
+        return new Money(currency, denomination.multiply(other.denomination));
+    }
+
+    public Money subtract(Money other){
+        return new Money(currency, denomination.subtract(other.denomination));
     }
     
     @Override
