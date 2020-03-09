@@ -25,10 +25,7 @@ public class OfferItem {
     private Money discount;
 
     public Money getTotalCost() {
-        String currency = product.getPrice().getCurrency();
-        BigDecimal cost = new BigDecimal(0);
-        cost = cost.add(new BigDecimal(quantity).multiply(product.getPrice().getDenomination().subtract(discount.getDenomination())));
-        return new Money(currency, cost);
+        return Money.getTotalCost(discount, quantity, product.getPrice());
     }
 
     @Override

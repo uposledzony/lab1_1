@@ -21,6 +21,13 @@ public class Money {
         return currency;
     }
 
+    public static Money getTotalCost(Money discount, int quantity, Money itemPrice){
+        String currency = itemPrice.getCurrency();
+        BigDecimal cost = new BigDecimal(0);
+        cost = cost.add(new BigDecimal(quantity).multiply(itemPrice.getDenomination().subtract(discount.getDenomination())));
+        return new Money(currency, cost);
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o)
